@@ -1,63 +1,81 @@
 {
-  "name": "kapsule",
-  "version": "1.14.5",
-  "description": "A closure based Web Component library",
-  "type": "module",
-  "unpkg": "dist/kapsule.min.js",
-  "main": "dist/kapsule.mjs",
-  "module": "dist/kapsule.mjs",
-  "types": "dist/kapsule.d.ts",
-  "exports": {
-    "umd": "./dist/kapsule.min.js",
-    "default": "./dist/kapsule.mjs"
-  },
-  "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vasturiano/kapsule.git"
-  },
-  "keywords": [
-    "kapsule",
-    "web",
-    "component",
-    "lifecycle",
-    "reusable",
-    "closure",
-    "d3js"
-  ],
-  "author": {
-    "name": "Vasco Asturiano",
-    "url": "https://github.com/vasturiano"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vasturiano/kapsule/issues"
-  },
-  "homepage": "https://github.com/vasturiano/kapsule",
-  "scripts": {
-    "build": "rimraf dist && rollup -c",
-    "dev": "rollup -w -c",
-    "prepare": "npm run build"
-  },
-  "files": [
-    "dist/**/*"
-  ],
-  "dependencies": {
-    "lodash-es": "4"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/preset-env": "^7.23.2",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "rimraf": "^5.0.5",
-    "rollup": "^4.1.4",
-    "rollup-plugin-dts": "^6.1.0",
-    "typescript": "^5.2.2"
-  },
-  "engines": {
-    "node": ">=12"
-  }
+    "name": "kapsule",
+    "version": "1.14.5",
+    "description": "A closure based Web Component library",
+    "type": "module",
+    "unpkg": "dist/kapsule.umd.js",
+    "main": "dist/kapsule.cjs.js",
+    "module": "dist/kapsule.es.js",
+    "types": "dist/kapsule.d.ts",
+    "browser": "./dist/kapsule.umd.js",
+    "exports": {
+        "umd": "./dist/kapsule.umd.js",
+        "default": "./dist/kapsule.cjs.js"
+    },
+    "sideEffects": false,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vasturiano/kapsule.git"
+    },
+    "keywords": [
+        "kapsule",
+        "web",
+        "component",
+        "lifecycle",
+        "reusable",
+        "closure",
+        "d3js"
+    ],
+    "author": {
+        "name": "Vasco Asturiano",
+        "url": "https://github.com/vasturiano"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vasturiano/kapsule/issues"
+    },
+    "homepage": "https://github.com/vasturiano/kapsule",
+    "scripts": {
+        "build:rollup": "rimraf dist && rollup -c",
+        "dev:rollup": "rollup -w -c",
+        "prepare": "npm run build",
+        "x css:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+        "x css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
+        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --verbose",
+        "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --verbose --watch",
+        "build:watch": "vite build --watch",
+        "build:vite": "vite build",
+        "build": "run-s build:vite declaration",
+        "build:web": "vite build --config=vite.config.web.ts --force --mode production",
+        "web": "vite preview --config=vite.config.web.ts --host",
+        "dev:only": "vite --config=vite.config.web.ts --force --mode dev --host",
+        "dev": "run-p dev:only"
+    },
+    "files": [
+        "dist/**/*"
+    ],
+    "dependencies": {
+        "lodash-es": "4"
+    },
+    "peerDependencies": {
+        "woby": "workspace:../woby"
+    },
+    "devDependencies": {
+        "vite": "^4.3.3",
+        "@babel/core": "^7.23.2",
+        "@babel/preset-env": "^7.23.2",
+        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "tailwindcss": "^3.3.3",
+        "tailwindcss-elevation": "^2.0.0",
+        "rimraf": "^5.0.5",
+        "rollup": "^4.1.4",
+        "rollup-plugin-dts": "^6.1.0",
+        "typescript": "^5.2.2"
+    },
+    "engines": {
+        "node": ">=12"
+    }
 }
