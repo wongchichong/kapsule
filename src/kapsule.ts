@@ -40,7 +40,7 @@ export type Chainable<T extends Record<string, PropOptions<any, any>>> = {
 // aa.v
 
 
-export default function <P extends Record<string, PropOptions<any, any>>>({
+export function Kapsule<P extends Record<string, PropOptions<any, any>>>({
     stateInit = ((o) => ({} as P)),
     props: rawProps = {} as P,
     methods = {},

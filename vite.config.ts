@@ -7,8 +7,8 @@ const config = defineConfig({
         minify: false,
         lib: {
             entry: ["./src/kapsule.ts"],
-            name: "sunburst-chart",
-            formats: ['es', 'cjs', 'umd'],
+            name: "kapsule",
+            formats: [/* 'cjs', */ 'es' /*, 'umd'*/],
             fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
         },
         sourcemap: true,

@@ -3,14 +3,14 @@
     "version": "1.14.5",
     "description": "A closure based Web Component library",
     "type": "module",
-    "unpkg": "dist/kapsule.umd.js",
-    "main": "dist/kapsule.cjs.js",
-    "module": "dist/kapsule.es.js",
-    "types": "dist/kapsule.d.ts",
+    "unpkg": "./dist/kapsule.umd.js",
+    "main": "./dist/kapsule.cjs.js",
+    "module": "./dist/kapsule.es.js",
     "browser": "./dist/kapsule.umd.js",
+    "types": "./dist/kapsule.d.ts",
     "exports": {
         "umd": "./dist/kapsule.umd.js",
-        "default": "./dist/kapsule.cjs.js"
+        "default": "./dist/kapsule.es.js"
     },
     "sideEffects": false,
     "repository": {
@@ -36,13 +36,14 @@
     },
     "homepage": "https://github.com/vasturiano/kapsule",
     "scripts": {
+        "release": "git add . && git commit -m \"Bump version\" && git push && pnpm version patch",
         "build:rollup": "rimraf dist && rollup -c",
         "dev:rollup": "rollup -w -c",
-        "prepare": "npm run build",
+        "prepare x": "npm run build",
         "x css:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
         "x css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
-        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --verbose",
-        "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --verbose --watch",
+        "declaration": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose",
+        "declaration:watch": "tsc --build --force --declaration --emitDeclarationOnly --declarationMap  --verbose --watch",
         "build:watch": "vite build --watch",
         "build:vite": "vite build",
         "build": "run-s build:vite declaration",
@@ -61,19 +62,19 @@
         "woby": "workspace:../woby"
     },
     "devDependencies": {
-        "vite": "^4.3.3",
         "@babel/core": "^7.23.2",
         "@babel/preset-env": "^7.23.2",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-commonjs": "^25.0.7",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
-        "tailwindcss": "^3.3.3",
-        "tailwindcss-elevation": "^2.0.0",
         "rimraf": "^5.0.5",
-        "rollup": "^4.1.4",
+        "rollup": "^4.14.1",
         "rollup-plugin-dts": "^6.1.0",
-        "typescript": "^5.2.2"
+        "tailwindcss": "^3.4.3",
+        "tailwindcss-elevation": "^2.0.0",
+        "typescript": "^5.4.4",
+        "vite": "^5.2.8"
     },
     "engines": {
         "node": ">=12"

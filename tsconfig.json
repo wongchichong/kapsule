@@ -6,7 +6,7 @@
         "allowUnusedLabels": false,
         "alwaysStrict": true,
         "declaration": true,
-        // "declarationDir": "./",
+        "declarationDir": "./dist/types",
         "disableSizeLimit": true,
         "esModuleInterop": false,
         "forceConsistentCasingInFileNames": true,
@@ -53,7 +53,7 @@
         "*.test.ts*",
         "example/*",
         "tailwind.config.ts",
-        "vite.config.ts",
+        "vite.*.*ts",
         "vite.config.*.ts",
     ]
     // "include": [
